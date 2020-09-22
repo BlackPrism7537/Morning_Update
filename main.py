@@ -12,7 +12,8 @@ with open(join(dirname(abspath(__file__)), 'settings.json'), "r") as f:
 def time():
     current_date = datetime.today()
     current_time = datetime.now()
-    print(current_date.strftime("%d %B, %Y") + " - " + current_time.strftime("%H:%M:%S"))
+    data = "{} - {}".format(current_date.strftime("%d %B, %Y"),current_time.strftime("%H:%M:%S"))
+    print("{:^40}".format(data))
  
 
 def weather():
@@ -21,25 +22,36 @@ def weather():
     weather_temp = int(weather_data['main']['temp'])
     weather_desc = weather_data['weather'][0]['description']
 
-    print("{0}: {1}ºc : {2}".format(waether_loc, weather_temp, weather_desc))
+    data = "{0} : {1} : {2}ºc".format(waether_loc, weather_desc, weather_temp)
+    print("{:^40}".format(data))
+
+
+def todoList():
+    with open(settings['todo-json'], "r") as f:
+        tasks = load(f)['tasks']
+
+    print("\n------------------Todo------------------\n")
+
+    for task in tasks:
+        print("{0:<35.35} : ☐".format(task))
 
 
 def news():
     print("\n------------------News------------------")
 
     for keyphrase in settings['keyphrases']:
-        print("\n" + keyphrase + ":")
-        articles = getArticles(keyphrase, settings['newsapi-key'])
-        
-        for article in articles:
-            text = wrap(article['title'], 40)
+        article = getArticles(keyphrase, settings['newsapi-key'])
+        if (article):
+            print("\n" + keyphrase + ":")
+            text = wrap(article[0]['title'], 40)
             for line in text:
-                print (line)
-            print("({0})".format(article['source']['name']))
+                print(line)
+            print("({0})".format(article[0]['source']['name']))
 
 
 if __name__ == "__main__":
     time()
     weather()
+    todoList()
     news()
     

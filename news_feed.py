@@ -11,5 +11,8 @@ def getArticles(key_phrase, api) :
         'apiKey'    : api        
     }
 
-    response = requests.get(url, params=parameters)
-    return response.json()['articles']
+    response = requests.get(url, params=parameters).json()
+    if (response['status'] == 'ok'):
+        return response['articles']
+    else:
+        return {}

@@ -1,7 +1,8 @@
 {
-    "newsapi-key"   : "{NewsApi-Key}",
-    "owmapi-key"    : "{OWMApi-Key}",
+    "newsapi-key"   : "93cf832c6d8349ed8ef8bc8215939684",
+    "owmapi-key"    : "1b3b2117f2008c3367a98f3ac295e2da",
     "location"      : "Leeds",
+    "todo-json"     : "/home/zach/code/python/morning_feed/todo.json",
     "keyphrases"      : [
         "UK",
         "Covid-19",
