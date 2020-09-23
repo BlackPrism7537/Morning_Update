@@ -1,7 +1,7 @@
 {
     "newsapi-key"   : "{NewsApi-key}",
     "owmapi-key"    : "{OWMApi-key}",
-    "location"      : "Leeds",
+    "location"      : "{Your City}",
     "todo-json"     : "{TodoJson-path}",
     "keyphrases"      : [
         "UK",
